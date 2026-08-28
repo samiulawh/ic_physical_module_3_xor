@@ -1,0 +1,134 @@
+#! /usr/bin/vvp
+:ivl_version "12.0 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/system.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_sys.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_textio.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/v2005_math.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/va_math.vpi";
+S_0x561d745f4490 .scope module, "tb_xor_it" "tb_xor_it" 2 3;
+ .timescale -12 -12;
+v0x561d74649160_0 .var "change_defxor", 0 0;
+v0x561d74649220_0 .var "clk", 0 0;
+v0x561d746492f0_0 .var "custom_xor", 7 0;
+v0x561d746493f0_0 .var "data_in", 7 0;
+v0x561d746494c0_0 .var "def_sig", 0 0;
+v0x561d74649560_0 .var "new_def_xor", 7 0;
+v0x561d74649630_0 .var "rst", 0 0;
+v0x561d74649700_0 .net "xored", 7 0, v0x561d74648f80_0;  1 drivers
+S_0x561d745f4620 .scope module, "uut1" "xor_it" 2 9, 3 3 0, S_0x561d745f4490;
+ .timescale -12 -12;
+    .port_info 0 /INPUT 1 "rst";
+    .port_info 1 /INPUT 1 "clk";
+    .port_info 2 /INPUT 1 "def_sig";
+    .port_info 3 /INPUT 1 "change_defxor";
+    .port_info 4 /INPUT 8 "data_in";
+    .port_info 5 /INPUT 8 "custom_xor";
+    .port_info 6 /INPUT 8 "new_def_xor";
+    .port_info 7 /OUTPUT 8 "xored";
+L_0x764309ace018 .functor BUFT 1, C4<01010101>, C4<0>, C4<0>, C4<0>;
+v0x561d7462f720_0 .net/2u *"_ivl_0", 7 0, L_0x764309ace018;  1 drivers
+v0x561d746488d0_0 .net "change_defxor", 0 0, v0x561d74649160_0;  1 drivers
+v0x561d74648990_0 .net "clk", 0 0, v0x561d74649220_0;  1 drivers
+v0x561d74648a30_0 .net "custom_xor", 7 0, v0x561d746492f0_0;  1 drivers
+v0x561d74648b10_0 .net "data_in", 7 0, v0x561d746493f0_0;  1 drivers
+v0x561d74648c40_0 .net "def_sig", 0 0, v0x561d746494c0_0;  1 drivers
+v0x561d74648d00_0 .net "default_xor", 7 0, L_0x561d74649800;  1 drivers
+v0x561d74648de0_0 .net "new_def_xor", 7 0, v0x561d74649560_0;  1 drivers
+v0x561d74648ec0_0 .net "rst", 0 0, v0x561d74649630_0;  1 drivers
+v0x561d74648f80_0 .var "xored", 7 0;
+E_0x561d746305e0 .event posedge, v0x561d74648ec0_0, v0x561d74648990_0;
+L_0x561d74649800 .functor MUXZ 8, L_0x764309ace018, v0x561d74649560_0, v0x561d74649160_0, C4<>;
+    .scope S_0x561d745f4620;
+T_0 ;
+    %wait E_0x561d746305e0;
+    %load/vec4 v0x561d74648ec0_0;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_0.0, 8;
+    %pushi/vec4 0, 0, 8;
+    %assign/vec4 v0x561d74648f80_0, 0;
+    %jmp T_0.1;
+T_0.0 ;
+    %load/vec4 v0x561d74648c40_0;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_0.2, 8;
+    %load/vec4 v0x561d74648b10_0;
+    %load/vec4 v0x561d74648d00_0;
+    %xor;
+    %assign/vec4 v0x561d74648f80_0, 0;
+    %jmp T_0.3;
+T_0.2 ;
+    %load/vec4 v0x561d74648b10_0;
+    %load/vec4 v0x561d74648a30_0;
+    %xor;
+    %assign/vec4 v0x561d74648f80_0, 0;
+T_0.3 ;
+T_0.1 ;
+    %jmp T_0;
+    .thread T_0;
+    .scope S_0x561d745f4490;
+T_1 ;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x561d74649220_0, 0, 1;
+T_1.0 ;
+    %delay 5, 0;
+    %load/vec4 v0x561d74649220_0;
+    %inv;
+    %store/vec4 v0x561d74649220_0, 0, 1;
+    %jmp T_1.0;
+    %end;
+    .thread T_1;
+    .scope S_0x561d745f4490;
+T_2 ;
+    %vpi_call 2 27 "$dumpfile", "xor_it.vcd" {0 0 0};
+    %vpi_call 2 28 "$dumpvars", 32'sb00000000000000000000000000000000, S_0x561d745f4490 {0 0 0};
+    %vpi_call 2 30 "$monitor", "Time: %0t | rst: %b | def_sig: %b | change_defxor: %b | data_in: %b | xored: %b", $time, v0x561d74649630_0, v0x561d746494c0_0, v0x561d74649160_0, v0x561d746493f0_0, v0x561d74649700_0 {0 0 0};
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x561d74649630_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x561d746494c0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x561d74649160_0, 0, 1;
+    %pushi/vec4 0, 0, 8;
+    %store/vec4 v0x561d746493f0_0, 0, 8;
+    %pushi/vec4 0, 0, 8;
+    %store/vec4 v0x561d746492f0_0, 0, 8;
+    %pushi/vec4 0, 0, 8;
+    %store/vec4 v0x561d74649560_0, 0, 8;
+    %delay 7, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x561d74649630_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x561d746494c0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x561d74649160_0, 0, 1;
+    %pushi/vec4 255, 0, 8;
+    %store/vec4 v0x561d746493f0_0, 0, 8;
+    %delay 20, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x561d746494c0_0, 0, 1;
+    %pushi/vec4 204, 0, 8;
+    %store/vec4 v0x561d746492f0_0, 0, 8;
+    %pushi/vec4 240, 0, 8;
+    %store/vec4 v0x561d746493f0_0, 0, 8;
+    %delay 20, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x561d746494c0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x561d74649160_0, 0, 1;
+    %pushi/vec4 170, 0, 8;
+    %store/vec4 v0x561d74649560_0, 0, 8;
+    %pushi/vec4 15, 0, 8;
+    %store/vec4 v0x561d746493f0_0, 0, 8;
+    %delay 20, 0;
+    %vpi_call 2 58 "$display", "\012Simulation complete." {0 0 0};
+    %vpi_call 2 59 "$finish" {0 0 0};
+    %end;
+    .thread T_2;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "tb_xor_it.v";
+    "xor_it.v";
