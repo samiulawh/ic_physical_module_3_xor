@@ -1,0 +1,8 @@
+VCD info: dumpfile xor_it.vcd opened for output.
+Time:6 | rst:1 | def_sig:0 | change:0 | data:00000000 | xor:00000000 | expected:00000000 | DUT:00000000
+Time:16 | rst:0 | def_sig:1 | change:0 | data:11111111 | xor:01010101 | expected:10101010 | DUT:10101010
+Time:26 | rst:0 | def_sig:0 | change:0 | data:11110000 | xor:11001100 | expected:00111100 | DUT:00111100
+Time:36 | rst:0 | def_sig:1 | change:1 | data:00001111 | xor:10101010 | expected:10100101 | DUT:10100101
+
+Simulation complete.
+tb_xor_it.v:80: $finish called at 37 (1ps)

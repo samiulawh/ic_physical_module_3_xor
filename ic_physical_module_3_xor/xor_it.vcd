@@ -1,0 +1,153 @@
+$date
+	Fri Aug 28 10:32:00 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module tb_xor_it $end
+$var wire 8 ! xored [7:0] $end
+$var wire 8 " active_def_xor [7:0] $end
+$var reg 1 # change_defxor $end
+$var reg 1 $ clk $end
+$var reg 8 % custom_xor [7:0] $end
+$var reg 8 & data_in [7:0] $end
+$var reg 1 ' def_sig $end
+$var reg 8 ( new_def_xor [7:0] $end
+$var reg 1 ) rst $end
+$scope module uut1 $end
+$var wire 1 * _01_ $end
+$var wire 1 + _03_ $end
+$var wire 1 , _05_ $end
+$var wire 1 - _07_ $end
+$var wire 1 . _09_ $end
+$var wire 1 / _11_ $end
+$var wire 1 0 _13_ $end
+$var wire 1 1 _15_ $end
+$var wire 1 # change_defxor $end
+$var wire 1 $ clk $end
+$var wire 8 2 custom_xor [7:0] $end
+$var wire 8 3 data_in [7:0] $end
+$var wire 1 ' def_sig $end
+$var wire 8 4 new_def_xor [7:0] $end
+$var wire 1 ) rst $end
+$var wire 1 5 _16_ $end
+$var wire 1 6 _14_ $end
+$var wire 1 7 _12_ $end
+$var wire 1 8 _10_ $end
+$var wire 1 9 _08_ $end
+$var wire 1 : _06_ $end
+$var wire 1 ; _04_ $end
+$var wire 1 < _02_ $end
+$var wire 8 = _00_ [7:0] $end
+$var reg 8 > xored [7:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+$end
+#0
+$dumpvars
+b0 >
+b0 =
+0<
+0;
+0:
+09
+08
+07
+06
+05
+b0 4
+b0 3
+b0 2
+11
+00
+1/
+0.
+1-
+0,
+1+
+0*
+1)
+b0 (
+0'
+b0 &
+b0 %
+0$
+0#
+b1010101 "
+b0 !
+$end
+#5
+1$
+#7
+b10101010 =
+1;
+19
+17
+15
+b11111111 &
+b11111111 3
+1'
+0)
+#10
+0$
+#15
+b10101010 !
+b10101010 >
+1$
+#17
+1<
+18
+b111100 =
+0;
+19
+07
+15
+b11110000 &
+b11110000 3
+b11001100 %
+b11001100 2
+0'
+#20
+0$
+#25
+b111100 !
+b111100 >
+1$
+#27
+1:
+16
+09
+05
+b10100101 =
+1*
+1,
+1.
+10
+0+
+0-
+0/
+01
+b10101010 "
+1<
+0;
+18
+07
+b1111 &
+b1111 3
+b10101010 (
+b10101010 4
+1#
+1'
+#30
+0$
+#35
+b10100101 !
+b10100101 >
+1$
+#37
